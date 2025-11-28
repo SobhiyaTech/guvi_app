@@ -136,10 +136,15 @@ form .form-control.is-valid { border-color: var(--muted); }
 
 /* Register button */
 .btn-register {
-  background: linear-gradient(90deg, var(--success-start), var(--success-end)) !important;
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1.25rem !important;
+  font-size: 1.25rem;
+  border-radius: 10px;
   color: #ffffff !important;
-  border: 1px solid rgba(255,255,255,0.04) !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.45) !important;
+  background: linear-gradient(90deg, #6DC3BB 0%, #2F6F6A 100%) !important;
+  border: none !important;
+  box-shadow: 0 8px 18px rgba(47,111,106,0.22) !important;
 }
 
 /* Avatar and badge colors using the palette */
@@ -242,6 +247,24 @@ form .form-control.is-valid { border-color: var(--muted); }
 	color: #658C58 !important;
 }
 
+/* Force profile info values to use dark/black text (override green) */
+#profileInfoDisplay .text-primary,
+#profileInfoDisplay .text-success,
+#profileInfoDisplay .profile-value,
+#profileInfoDisplay p strong,
+#profileInfoDisplay .lead {
+  color: var(--text-dark) !important; /* uses #071319 from :root */
+}
+
+/* ensure any inline badges/values inside profile sections are dark */
+#profileInfoDisplay .badge-contact,
+#profileInfoDisplay .badge-age,
+#profileInfoDisplay .value {
+  color: var(--text-dark) !important;
+  background: transparent !important;
+  border: none !important;
+}
+
 /* Card header icons */
 .card-body h2 svg {
 	transition: transform 0.2s ease;
@@ -276,3 +299,94 @@ form .form-control.is-valid { border-color: var(--muted); }
 }
 /* ensure inline text/icons use correct contrast */
 .alert-success a, .alert-success strong { color: #ffffff !important; }
+/* ===== AUTH CARD: light white card like screenshot ===== */
+.welcome-card,
+.auth-card,
+.content-box,
+.card .card-body,
+.auth-page .card .card-body {
+  background: #ffffff !important;
+  color: #0b0b0b !important;
+  border-radius: 20px !important;
+  padding: 2.25rem !important;
+  box-shadow: 0 20px 40px rgba(7,19,25,0.06) !important;
+  border: 1px solid rgba(7,19,25,0.04) !important;
+  background-image: none !important;
+}
+
+/* Card header / title styles */
+.welcome-card h1,
+.auth-card h1,
+.content-box h1 {
+  color: #1f2b2b !important;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+/* Helper / muted text */
+.welcome-card .help-text,
+.content-box .form-text,
+.auth-card .small {
+  color: rgba(7,19,25,0.55) !important;
+}
+
+/* Inputs inside the white card */
+.welcome-card .form-control,
+.auth-card .form-control,
+.content-box .form-control,
+.card .form-control {
+  background: #fafafa !important;
+  color: #0b0b0b !important;
+  border: 1px solid rgba(7,19,25,0.06) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+/* Placeholder color */
+.welcome-card ::placeholder,
+.auth-card ::placeholder {
+  color: rgba(7,19,25,0.45) !important;
+}
+
+/* FORCE: make Welcome title + Sign-in clearly visible (black) and remove selection highlight */
+.welcome-card h1,
+.welcome-card .h1,
+.welcome-card .welcome-title,
+#welcomeTitle,
+.welcome-card a.sign-in,
+.welcome-card .sign-in,
+.welcome-card a[href*="signin"],
+.welcome-card a[href*="login"] {
+  color: #071319 !important;               /* visible black */
+  background: transparent !important;
+  -webkit-text-fill-color: #071319 !important;
+  text-shadow: none !important;
+}
+
+/* prevent blue selection from hiding the title */
+.welcome-card h1::selection,
+.welcome-card .h1::selection,
+.welcome-card h1::-moz-selection,
+.welcome-card .h1::-moz-selection {
+  background: transparent !important;
+  color: #071319 !important;
+}
+
+/* Make the profile/avatar icon (emoji/SVG) use #6DC3BB */
+#userAvatar svg,
+#userAvatar .icon,
+.profile-avatar svg,
+.profile-icon,
+.icon-avatar,
+.card-body h2 svg,
+.fa-user,
+.bi-person-fill,
+.emoji-icon {
+  fill: #6DC3BB !important;    /* for inline SVGs */
+  color: #6DC3BB !important;   /* for icon fonts / text-based icons */
+  stroke: #6DC3BB !important;  /* in case icon uses stroke */
+  background-color: transparent !important;
+}
+
+/* If the emoji is a plain coloured emoji image (🍏), CSS can't recolor it.
+   In that case replace the emoji with an inline SVG or an icon font element. */
